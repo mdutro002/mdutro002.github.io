@@ -4,10 +4,11 @@
 //https://api.jquery.com/jQuery.parseXML/ 
 
 
-
-const encodeForURL = (string) => {
+//cleans up text input from form on page and scrubs it for calling the api
+const scrubURL = (string) => {
   //Need to replace spaces with percent signs so I can pass to apis
-  //let formattedString = string.
+  let formattedString = string.replace(/\s/g, '%');
+  console.log(formattedString);
 }
 
 const searchGR = () => {
@@ -38,5 +39,6 @@ const searchOMDB = () => {
 
 
 $(() => {
-  searchOMDB();
+  scrubURL('Suddenly Susan Saw a Monster');
+
 })
