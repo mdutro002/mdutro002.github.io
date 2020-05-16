@@ -6,29 +6,30 @@
 
 //cleans up text input from form on page and scrubs it for calling the api
 const scrubURL = (string) => {
-  //Need to replace spaces with percent signs so I can pass to apis
   let formattedString = string.replace(/\s/g, '%');
-  console.log(formattedString);
+  return formattedString;
 }
 
-const searchGR = () => {
+const searchGR = (searchString) => {
+  let cleanSearch = scrubURL(searchString);
   let apiKey = '?key=RnKpwA2VkQwJ2eVXmElg'
-  let queryParam = '&q=godfather'
+  let queryParam = '&q='
   $.ajax({
-  url: 'https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml' + apiKey + queryParam,
-  type: 'GET',
-  '$limit': 1
+    url: 'https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml' + apiKey + queryParam + cleanSearch,
+    type: 'GET',
+    '$limit': 1
   }).done(function(data) {
     console.log(data);
   });
 }
 
-const searchOMDB = () => {
+const searchOMDB = (searchString) => {
+  let cleanSearch = scrubURL(searchString);
   let startingURL = 'http://www.omdbapi.com/?apikey=3796b8a3'
-  let queryParam = '&t=godfather';
+  let queryParam = '&t=';
 
   $.ajax({
-    url: startingURL + queryParam,
+    url: startingURL + queryParam + cleanSearch,
     type: 'GET',
 
   }).done(function(data){
@@ -39,6 +40,5 @@ const searchOMDB = () => {
 
 
 $(() => {
-  scrubURL('Suddenly Susan Saw a Monster');
 
 })
