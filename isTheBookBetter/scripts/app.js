@@ -1,6 +1,7 @@
 /* eslint-disable */
 //RESOURCES:
 //https://www.goodreads.com/topic/show/17893514-cors-access-control-allow-origin
+//https://api.jquery.com/jQuery.parseXML/ 
 
 
 
@@ -22,11 +23,18 @@ const searchGR = () => {
 }
 
 const searchOMDB = () => {
-  let apiKey = '3796b8a3'
+  let startingURL = 'http://www.omdbapi.com/?apikey=3796b8a3'
+  let queryParam = '$t=';
+
+  $.ajax({
+    url: '',
+    type: 'GET',
+
+  })
+
 }
 
 
 $(() => {
-  searchGR();
 
 })
