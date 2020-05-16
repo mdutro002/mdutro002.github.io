@@ -24,17 +24,19 @@ const searchGR = () => {
 
 const searchOMDB = () => {
   let startingURL = 'http://www.omdbapi.com/?apikey=3796b8a3'
-  let queryParam = '$t=';
+  let queryParam = '&t=godfather';
 
   $.ajax({
-    url: '',
+    url: startingURL + queryParam,
     type: 'GET',
 
+  }).done(function(data){
+    console.log(data);
   })
 
 }
 
 
 $(() => {
-
+  searchOMDB();
 })
