@@ -20,6 +20,7 @@ const searchGR = (searchString) => {
     '$limit': 1
   }).done(function(data) {
     console.log(data);
+    //parse XML here, then pass to output function
   });
 }
 
@@ -34,6 +35,7 @@ const searchOMDB = (searchString) => {
 
   }).done(function(data){
     console.log(data);
+    //pass all OMDB data to output function
   })
 
 }
