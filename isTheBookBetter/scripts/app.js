@@ -60,11 +60,11 @@ const searchOMDB = (searchString) => {
 
 //Start on-page calls
 $(() => {
-  $('#searchPrompt').on('click', () => {
-    let searchString = $('#search').val();
-    $('#search').value = '';
-      searchOMDB(searchString);
-    // searchGR(searchString);
-  })
+  // $('#searchPrompt').on('click', () => {
+  //   let searchString = $('#search').val();
+  //   $('#search').value = '';
+  //     searchOMDB(searchString);
+  //   // searchGR(searchString);
+  // })
 
 })
