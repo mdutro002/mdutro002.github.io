@@ -44,21 +44,30 @@ h1 {
   max-height: 230px;
   max-width: 150px;
   padding-right: 5px;
+  margin-bottom: 10px;
 }
 
 #movieRes, #bookRes {
   border: solid black 1px;
   display: flex;
   flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
   padding: 5px;
+  width: 45%;
 }
 
 .descriptionDiv {
   display: flex;
-  flex-wrap: wrap;
-  max-width: 45%;
+  flex-direction: column;
+  width: 100%;
+  align-content: center;
+  justify-content: flex-start;
 }
 
+.descriptionDiv h4 {
+  margin: 0;
+}
 
 /* DESKTOP STYLING BELOW */
 
