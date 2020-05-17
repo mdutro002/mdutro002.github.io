@@ -50,6 +50,6 @@ const searchOMDB = (searchString) => {
 
 //Start on-page calls
 $(() => {
-  searchOMDB('goblet of fire');
+  
 
 })
