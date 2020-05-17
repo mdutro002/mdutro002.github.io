@@ -29,12 +29,12 @@ const searchGR = (searchString) => {
 const searchOMDB = (searchString) => {
   let cleanSearch = scrubURL(searchString);
   let startingURL = 'http://www.omdbapi.com/?apikey=3796b8a3'
-  let queryParam = '&t=';
+  let queryParam = '&s=';
 
   $.ajax({
     url: startingURL + queryParam + cleanSearch,
     type: 'GET',
-
+    $limit: 10
   }).done(function(data){
     console.log(data);
     //pass all OMDB data to output function
@@ -45,5 +45,6 @@ const searchOMDB = (searchString) => {
 
 //Start on-page calls
 $(() => {
+  searchOMDB('godfather');
 
 })

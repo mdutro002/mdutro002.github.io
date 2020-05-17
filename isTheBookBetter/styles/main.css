@@ -43,6 +43,7 @@ h1 {
 #mediaCompare img {
   max-height: 230px;
   max-width: 150px;
+  padding-right: 5px;
 }
 
 #movieRes, #bookRes {
