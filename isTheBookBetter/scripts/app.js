@@ -10,11 +10,18 @@ const scrubURL = (string) => {
   return formattedString;
 }
 
-//return specific omdb result
+//return specific omdb result - this will make another call to the omdb api to return top result
 const returnMovie = (imdbID) => {
-  //this will make another call to the omdb api to return top result
+  let startingURL = 'http://www.omdbapi.com/?apikey=3796b8a3'
+  let queryParam = '&i=';
+    $.ajax({
+      url: startingURL + queryParam + imdbID,
+      type: 'GET',
+      '$limit': 10
+    }).done(function(mov){
+      console.log(mov)
+  });
 }
-
 //goodreads search method
 const searchGR = (searchString) => {
   let cleanSearch = scrubURL(searchString);
@@ -27,6 +34,8 @@ const searchGR = (searchString) => {
   }).done(function(data) {
     console.log(data);
     //parse XML here, then pass to output function
+    bookDoc = $.parseXML(data);
+    $bookXML = $(bookDoc);
   });
 }
 
@@ -39,17 +48,23 @@ const searchOMDB = (searchString) => {
   $.ajax({
     url: startingURL + queryParam + cleanSearch,
     type: 'GET',
-    $limit: 10
+    '$limit': 10
   }).done(function(data){
     console.log(data);
+    console.log(data[0][0].imdbID);
     //pass all OMDB data to output function
+    //pass top 1 result to returnMovie();
+    // returnMovie(data[0].imdbID);
   })
 }
 
-
-
 //Start on-page calls
 $(() => {
-  
+  $('#searchPrompt').on('click', () => {
+    let searchString = $('#search').val();
+    $('#search').value = '';
+      searchOMDB(searchString);
+    // searchGR(searchString);
+  })
 
 })

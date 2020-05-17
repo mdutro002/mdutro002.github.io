@@ -26,6 +26,10 @@ main {
 
 h1 {
   font-family: 'Fira Sans Condensed', sans-serif;
+  background-color: #8c271eff;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: white;
 }
 
 #searchInput {
@@ -48,7 +52,7 @@ h1 {
 }
 
 #movieRes, #bookRes {
-  border: solid black 1px;
+  border: solid #a5a5a5ff 1px;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -67,6 +71,16 @@ h1 {
 
 .descriptionDiv h4 {
   margin: 0;
+}
+
+#showBDets, #showMDets {
+  background-color: #8c271eff;
+  color: white;
+  border-radius: 4px;
+  height: 4em;
+  margin-top: 30px;
+  width: 65%;
+  align-self: center;
 }
 
 /* DESKTOP STYLING BELOW */
