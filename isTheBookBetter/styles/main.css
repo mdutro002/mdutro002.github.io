@@ -1,17 +1,24 @@
+/* --color1: #8c271eff;
+--color2: #6d696aff;
+--color3: #a5a5a5ff;
+--color4: #d8dddeff;
+--color5: #1e1e24ff; */
+
 body {
   margin: 0 auto;
-  background-color: darkgray;
+  background-color: #6d696aff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
 }
 
 main {
   height: 100%;
   background-color: whitesmoke;
   width: 50%;
+  max-width: 65%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,11 +29,14 @@ h1 {
   font-family: 'Fira Sans Condensed', sans-serif;
 }
 
-
+#searchInput {
+  margin-bottom: 50px;
+}
 
 #mediaCompare {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 #mediaCompare img {
