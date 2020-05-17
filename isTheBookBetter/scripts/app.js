@@ -10,6 +10,7 @@ const scrubURL = (string) => {
   return formattedString;
 }
 
+//goodreads search method
 const searchGR = (searchString) => {
   let cleanSearch = scrubURL(searchString);
   let apiKey = '?key=RnKpwA2VkQwJ2eVXmElg'
@@ -24,6 +25,7 @@ const searchGR = (searchString) => {
   });
 }
 
+//omdb search method
 const searchOMDB = (searchString) => {
   let cleanSearch = scrubURL(searchString);
   let startingURL = 'http://www.omdbapi.com/?apikey=3796b8a3'
@@ -37,10 +39,11 @@ const searchOMDB = (searchString) => {
     console.log(data);
     //pass all OMDB data to output function
   })
-
 }
 
 
+
+//Start on-page calls
 $(() => {
 
 })

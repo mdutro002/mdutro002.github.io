@@ -1,4 +1,5 @@
 body {
+  margin: 0 auto;
   background-color: darkgray;
   display: flex;
   flex-direction: column;
@@ -11,4 +12,28 @@ main {
   height: 100%;
   background-color: whitesmoke;
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+
+
+#mediaCompare {
+  display: flex;
+  flex-direction: row;
+}
+
+#mediaCompare img {
+  max-height: 230px;
+  max-width: 150px;
+}
+
+#movieRes, #bookRes {
+  border: solid black 1px;
 }
