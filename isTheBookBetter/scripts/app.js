@@ -6,8 +6,13 @@
 
 //cleans up text input from form on page and scrubs it for calling the api
 const scrubURL = (string) => {
-  let formattedString = string.replace(/\s/g, '%');
+  let formattedString = string.replace(/\s/g, '+');
   return formattedString;
+}
+
+//return specific omdb result
+const returnMovie = (imdbID) => {
+  //this will make another call to the omdb api to return top result
 }
 
 //goodreads search method
@@ -45,6 +50,6 @@ const searchOMDB = (searchString) => {
 
 //Start on-page calls
 $(() => {
-  searchOMDB('godfather');
+  searchOMDB('star wars');
 
 })
