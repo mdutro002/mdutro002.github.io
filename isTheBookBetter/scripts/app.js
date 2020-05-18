@@ -2,6 +2,8 @@
 //RESOURCES:
 //https://www.goodreads.com/topic/show/17893514-cors-access-control-allow-origin
 //https://api.jquery.com/jQuery.parseXML/ 
+//https://www.w3schools.com/css/css_rwd_viewport.asp
+//https://www.geeksforgeeks.org/javascript-trigger-a-button-on-enter-key/
 
 
 //cleans up text input from form on page and scrubs it for calling the api
@@ -22,6 +24,16 @@ const returnMovie = (imdbID) => {
       console.log(mov)
   });
 }
+
+const outputBookData = (xmlData) => {
+  console.log(xmlData);
+  xmlDoc = $.parseXML( xmlData );
+  $bookInfo = $(xmlDoc);
+  console.log($(xmlDoc)); //returns empty object
+  $bookDetails = $bookInfo.find("work");
+  console.log($bookDetails);
+}
+
 //goodreads search method
 const searchGR = (searchString) => {
   let cleanSearch = scrubURL(searchString);
@@ -32,10 +44,7 @@ const searchGR = (searchString) => {
     type: 'GET',
     '$limit': 1
   }).done(function(data) {
-    console.log(data);
-    //parse XML here, then pass to output function
-    bookDoc = $.parseXML(data);
-    $bookXML = $(bookDoc);
+    outputBookData(data);
   });
 }
 
@@ -50,21 +59,25 @@ const searchOMDB = (searchString) => {
     type: 'GET',
     '$limit': 10
   }).done(function(data){
-    console.log(data);
-    console.log(data[0][0].imdbID);
-    //pass all OMDB data to output function
     //pass top 1 result to returnMovie();
-    // returnMovie(data[0].imdbID);
+    returnMovie(data.Search[0].imdbID);
   })
 }
 
 //Start on-page calls
 $(() => {
-  // $('#searchPrompt').on('click', () => {
-  //   let searchString = $('#search').val();
-  //   $('#search').value = '';
-  //     searchOMDB(searchString);
-  //   // searchGR(searchString);
-  // })
+  //lets user submit form by hitting enter
+  $("#search").keypress(function(event) { 
+    if (event.keyCode === 13) { 
+        $("#searchPrompt").click(); 
+    } 
+})
+
+  $('#searchPrompt').on('click', () => {
+    let searchString = $('#search').val();
+    $('#search').value = '';
+    searchOMDB(searchString);
+    // searchGR(searchString);
+  })
 
 })
