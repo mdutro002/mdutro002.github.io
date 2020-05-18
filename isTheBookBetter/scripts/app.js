@@ -25,16 +25,22 @@ const returnMovie = (imdbID) => {
   });
 }
 
+const outputMovie = () => {
+  //toggle hidden class on movieRes div
+}
+
+//traverses xml data returned from goodreads api and pushes to bookResult div
 const outputBookData = (xmlData) => {
   console.log(xmlData);
   xmlDoc = $.parseXML( xmlData );
   $bookInfo = $(xmlDoc);
   console.log($(xmlDoc)); //returns empty object
   $bookDetails = $bookInfo.find("work");
+  console.log($(xmlData).find("work"));
   console.log($bookDetails);
 }
 
-//goodreads search method
+//goodreads search method call
 const searchGR = (searchString) => {
   let cleanSearch = scrubURL(searchString);
   let apiKey = '?key=RnKpwA2VkQwJ2eVXmElg'
@@ -48,7 +54,7 @@ const searchGR = (searchString) => {
   });
 }
 
-//omdb search method
+//omdb search method call
 const searchOMDB = (searchString) => {
   let cleanSearch = scrubURL(searchString);
   let startingURL = 'http://www.omdbapi.com/?apikey=3796b8a3'
@@ -75,7 +81,6 @@ $(() => {
 
   $('#searchPrompt').on('click', () => {
     let searchString = $('#search').val();
-    $('#search').value = '';
     searchOMDB(searchString);
     // searchGR(searchString);
   })
