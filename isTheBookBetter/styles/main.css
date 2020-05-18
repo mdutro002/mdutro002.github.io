@@ -83,6 +83,11 @@ h1 {
   align-self: center;
 }
 
+.hidden {
+  display: none !important;
+}
+
+
 /* MOBILE STYLING BELOW */
 
 @media screen and (max-width: 600px) {

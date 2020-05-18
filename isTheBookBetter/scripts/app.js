@@ -27,18 +27,25 @@ const returnMovie = (imdbID) => {
 
 const outputMovie = () => {
   //toggle hidden class on movieRes div
+  $('#movieRes').toggleClass('hidden');
 }
 
 //traverses xml data returned from goodreads api and pushes to bookResult div
 const outputBookData = (xmlData) => {
-  console.log(xmlData);
-  xmlDoc = $.parseXML( xmlData );
-  $bookInfo = $(xmlDoc);
-  console.log($(xmlDoc)); //returns empty object
-  $bookDetails = $bookInfo.find("work");
-  console.log($(xmlData).find("work"));
-  console.log($bookDetails);
+  allWorks = $(xmlData).find("work");
+  firstWork = allWorks[0];
+  console.log(firstWork);
+  allBooks = $(xmlData).find("best_book");
+  firstBook = allBooks[0];
+  var idNode = $(firstBook).find('id').text();
+  var titleNode = $(firstBook).find('title').text();
+  var authorNode = $(firstBook).find('name').text();
+  var imageNode = $(firstBook).find('image_url').text();
+  $('#bookTitle').text(titleNode);
+  $('#bookImg').attr('src', imageNode);
+  $('#bookRes').toggleClass('hidden');
 }
+
 
 //goodreads search method call
 const searchGR = (searchString) => {
@@ -81,8 +88,9 @@ $(() => {
 
   $('#searchPrompt').on('click', () => {
     let searchString = $('#search').val();
-    searchOMDB(searchString);
-    // searchGR(searchString);
+    //searchOMDB(searchString);
+    searchGR(searchString);
+
   })
 
 })
