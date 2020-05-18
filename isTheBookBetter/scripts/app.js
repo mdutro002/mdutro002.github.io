@@ -90,7 +90,7 @@ const searchGR = (searchString) => {
 //omdb search method call
 const searchOMDB = (searchString) => {
   let cleanSearch = scrubURL(searchString);
-  let startingURL = 'http://www.omdbapi.com/?apikey=3796b8a3'
+  let startingURL = 'https://www.omdbapi.com/?apikey=3796b8a3'
   let queryParam = '&s=';
 
   $.ajax({
