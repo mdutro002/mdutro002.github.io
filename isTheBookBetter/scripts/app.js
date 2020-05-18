@@ -13,6 +13,7 @@ const scrubURL = (string) => {
 }
 
 const makeModal = () => {
+  console.log('modal Triggered');
   //generic makeModal function that passes in templated string to display:
 }
 
@@ -30,32 +31,35 @@ const returnMovie = (imdbID) => {
 }
 
 const outputMovie = (movieData) => {
+  $('#movDescrip').empty();
+  console.log(movieData);
   $('#movieImg').attr('src', movieData.Poster);
   $('#movieTitle').text(movieData.Title)
   $year = $('<h4>').text(`Year: ${movieData.Year}`)
   $metaScore = $('<h4>').text(`Metascore: ${movieData.Metascore}`);
   $('#movDescrip').append($year);
   $('#movDescrip').append($metaScore);
-  $('#movieRes').toggleClass('hidden');
 }
 
 //traverses xml data returned from goodreads api and pushes to bookResult div
 const outputBookData = (xmlData) => {
+  $('#bookDescrip').empty();
   allWorks = $(xmlData).find("work"); //selects XML elements at a slightly higher level
   firstWork = allWorks[0];
   allBooks = $(xmlData).find("best_book"); //selects all best_book XML items
   firstBook = allBooks[0];
-  console.log();
-  console.log();
+  var avgRating = $(firstWork).find('average_rating').text();
+  var pubYear = $(firstWork).find('original_publication_year').text();
   var fidnode = $(firstWork).find('id').text();//TODO - which of these gets bookid?
   var bidNode = $(firstBook).find('id').text();
   var titleNode = $(firstBook).find('title').text();
-  var authorNode = $(firstBook).find('name').text();
   var imageNode = $(firstBook).find('image_url').text();
-
+  $year = $('<h4>').text(`Year: ${pubYear}`)
+  $score = $('<h4>').text(`Review Average: ${avgRating} `);
+  $('#bookDescrip').append($year);
+  $('#bookDescrip').append($score);
   $('#bookTitle').text(titleNode);
   $('#bookImg').attr('src', imageNode);
-  $('#bookRes').toggleClass('hidden');
 
   //https://www.goodreads.com/book/show/
 }
@@ -97,12 +101,14 @@ $(() => {
         $("#searchPrompt").click(); 
     } 
 })
-
   $('#searchPrompt').on('click', () => {
     let searchString = $('#search').val();
     searchOMDB(searchString);
     searchGR(searchString);
-
+    $('#movieRes').removeClass('hidden'); //TODO - fix this behavior - need to pop up once, then just update
+    $('#bookRes').removeClass('hidden');
   })
+  $('#showMDets').on('click', makeModal);
+  $('#showBDets').on('click', makeModal);
 
 })
