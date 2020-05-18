@@ -99,10 +99,30 @@ h1 {
 }
 
 #modal-textbox {
+  display: flex;
+  flex-direction: column;
+  
   background-color: white;
   height: 350px;
   width: 550px;
   border-radius: 8px;
+}
+
+#modal-textbox h1 {
+  width: 100%;
+}
+
+#modal-textbox a {
+  align-self: flex-end;
+}
+
+#modal-textbox button {
+  align-self: flex-end;
+  background-color: #6d696aff;
+  color: white;
+  border-radius: 5px;
+  margin-right: 10px; 
+  margin-top: 10px;
 }
 
 .hidden {
