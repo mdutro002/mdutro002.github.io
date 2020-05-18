@@ -12,9 +12,12 @@ const scrubURL = (string) => {
   return formattedString;
 }
 
-const makeModal = () => {
-  console.log('modal Triggered');
-  //generic makeModal function that passes in templated string to display:
+//function to show modal - content
+const showModal = (title, content) => {
+  //console.log(title, content);
+  $('#modalTitle').text(title);
+  $('#modalText').text(content);
+  $('#modal').toggleClass('hidden');
 }
 
 //return specific omdb result - this will make another call to the omdb api to return top result
@@ -31,6 +34,8 @@ const returnMovie = (imdbID) => {
 }
 
 const outputMovie = (movieData) => {
+  imdbLink = `https://www.imdb.com/title/`
+  linkID = movieData.imdbID;
   $('#movDescrip').empty(); //clears details
   $('#movieImg').attr('src', movieData.Poster); //sets poster image
   $('#movieTitle').text(movieData.Title) //sets title
@@ -38,12 +43,14 @@ const outputMovie = (movieData) => {
   $metaScore = $('<h4>').text(`Metascore: ${movieData.Metascore}`);
   $('#movDescrip').append($year);
   $('#movDescrip').append($metaScore);
-
-  // https://www.imdb.com/title/tt0073195/
+  $('#showMDets').on('click', () => {
+    showModal(`${movieData.Title}`,`View more information on IMDB: ${ imdbLink + linkID}</a>` )
+  });
 }
 
 //traverses xml data returned from goodreads api and pushes to bookResult div
 const outputBookData = (xmlData) => {
+  grLink = 'https://www.goodreads.com/book/show/'
   $('#bookDescrip').empty();
   allWorks = $(xmlData).find("work"); //selects XML elements at a slightly higher level
   firstWork = allWorks[0];
@@ -51,7 +58,7 @@ const outputBookData = (xmlData) => {
   firstBook = allBooks[0];
   var avgRating = $(firstWork).find('average_rating').text();
   var pubYear = $(firstWork).find('original_publication_year').text();
-  var fidnode = $(firstWork).find('id').text();//TODO - which of these gets bookid?
+  var fidNode = $(firstWork).find('id').text();//TODO - which of these gets bookid?
   var bidNode = $(firstBook).find('id').text();
   var titleNode = $(firstBook).find('title').text();
   var imageNode = $(firstBook).find('image_url').text();
@@ -61,8 +68,9 @@ const outputBookData = (xmlData) => {
   $('#bookDescrip').append($score);
   $('#bookTitle').text(titleNode);
   $('#bookImg').attr('src', imageNode);
-
-  //https://www.goodreads.com/book/show/
+  $('#showBDets').on('click', () => {
+    showModal(titleNode, `View more information on Goodreads: ${grLink + fidNode}`)
+  });
 }
 
 //goodreads search method call
@@ -102,14 +110,16 @@ $(() => {
         $("#searchPrompt").click(); 
     } 
 })
-  $('#searchPrompt').on('click', () => {
+  $('#searchPrompt').on('click', (e) => {
     let searchString = $('#search').val();
+    e.preventDefault();
     searchOMDB(searchString);
     searchGR(searchString);
     $('#movieRes').removeClass('hidden'); //TODO - fix this behavior - need to pop up once, then just update
     $('#bookRes').removeClass('hidden');
   })
-  $('#showMDets').on('click', makeModal);
-  $('#showBDets').on('click', makeModal);
-
+ 
+  $('#modalClose').on('click', () => {
+    $('#modal').toggleClass('hidden');
+  })
 })
