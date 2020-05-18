@@ -31,14 +31,15 @@ const returnMovie = (imdbID) => {
 }
 
 const outputMovie = (movieData) => {
-  $('#movDescrip').empty();
-  console.log(movieData);
-  $('#movieImg').attr('src', movieData.Poster);
-  $('#movieTitle').text(movieData.Title)
-  $year = $('<h4>').text(`Year: ${movieData.Year}`)
+  $('#movDescrip').empty(); //clears details
+  $('#movieImg').attr('src', movieData.Poster); //sets poster image
+  $('#movieTitle').text(movieData.Title) //sets title
+  $year = $('<h4>').text(`Year: ${movieData.Year}`) 
   $metaScore = $('<h4>').text(`Metascore: ${movieData.Metascore}`);
   $('#movDescrip').append($year);
   $('#movDescrip').append($metaScore);
+
+  // https://www.imdb.com/title/tt0073195/
 }
 
 //traverses xml data returned from goodreads api and pushes to bookResult div
