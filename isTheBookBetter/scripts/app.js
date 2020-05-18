@@ -22,7 +22,7 @@ const showModal = (title, content) => {
 
 //return specific omdb result - this will make another call to the omdb api to return top result
 const returnMovie = (imdbID) => {
-  let startingURL = 'http://www.omdbapi.com/?apikey=3796b8a3'
+  let startingURL = 'https://www.omdbapi.com/?apikey=3796b8a3'
   let queryParam = '&i=';
     $.ajax({
       url: startingURL + queryParam + imdbID,
