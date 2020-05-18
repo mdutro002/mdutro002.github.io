@@ -69,7 +69,7 @@ const outputBookData = (xmlData) => {
   $('#bookTitle').text(titleNode);
   $('#bookImg').attr('src', imageNode);
   $('#showBDets').on('click', () => {
-    showModal(titleNode, `View more information on Goodreads: ${grLink + fidNode}`)
+    showModal(titleNode, `View more information on Goodreads: ${grLink + fidNode}`) //this link isn't working properly
   });
 }
 
