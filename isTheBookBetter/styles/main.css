@@ -45,8 +45,8 @@ h1 {
 }
 
 #mediaCompare img {
-  max-height: 230px;
-  max-width: 150px;
+  max-height: 160px;
+  max-width: 100px;
   padding-right: 5px;
   margin-bottom: 10px;
 }
