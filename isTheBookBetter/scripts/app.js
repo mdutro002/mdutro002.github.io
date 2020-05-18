@@ -112,6 +112,9 @@ $(() => {
 })
   $('#searchPrompt').on('click', (e) => {
     let searchString = $('#search').val();
+    if (searchString === "") {
+      console.log('empty string! aborting search');
+    }
     e.preventDefault();
     searchOMDB(searchString);
     searchGR(searchString);
