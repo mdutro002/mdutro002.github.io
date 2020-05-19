@@ -101,15 +101,25 @@ h1 {
 #modal-textbox {
   display: flex;
   flex-direction: column;
-  
+  align-items: center;
   background-color: white;
   height: 350px;
   width: 550px;
   border-radius: 8px;
+  font-family: sans-serif;
 }
 
 #modal-textbox h1 {
   width: 100%;
+}
+
+#modal-textbox h1 {
+  width: 98%;
+}
+
+#modalText {
+  margin-left: 10px;
+  max-width: 80%;
 }
 
 #modalClose {

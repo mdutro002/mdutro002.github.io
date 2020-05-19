@@ -41,7 +41,7 @@ const outputMovie = (movieData) => {
   $('#movDescrip').append($year);
   $('#movDescrip').append($metaScore);
   $('#showMDets').on('click', () => { //moved the makeModal function within the book and movie methods
-    $()
+    $('#modalText').empty();
     $('#modalTitle').text(movieData.Title);
     $released = $('<h4>').text(`Year: ${movieData.Released}`);
     $directorEl = $('<h4>').text(`Director: ${movieData.Director}`);
@@ -55,7 +55,7 @@ const outputMovie = (movieData) => {
 
 //traverses xml data returned from goodreads api and pushes to bookResult div
 const outputBookData = (xmlData) => {
-  grLink = 'https://www.goodreads.com/book/show/'
+  grLink = 'https://www.goodreads.com/book/show/' //I cannot use this link right now as there's an issue with the xml id's as they are output
   $('#bookDescrip').empty();
   allWorks = $(xmlData).find("work"); //selects XML elements at a slightly higher level
   firstWork = allWorks[0]; //selects first result from works
@@ -63,10 +63,11 @@ const outputBookData = (xmlData) => {
   firstBook = allBooks[0]; //selects first result from best_books
   var avgRating = $(firstWork).find('average_rating').text();//gets relevant data from xml objects
   var pubYear = $(firstWork).find('original_publication_year').text();
-  var bidNode = $(firstBook).find('id').text();
+  var bidNode = $(firstBook).find('best_book').find('id').text();
   var authorNode = $(firstBook).find('author').find('name').text();
   var titleNode = $(firstBook).find('title').text();
   var imageNode = $(firstBook).find('image_url').text();
+  console.log(grLink + bidNode);
   $byear = $('<h4>').text(`Year: ${pubYear}`)
   $released = $('<h4>').text(`Year: ${pubYear}`)
   $score = $('<h4>').text(`Review Average: ${avgRating} `);
@@ -80,7 +81,7 @@ const outputBookData = (xmlData) => {
     $authorEl = $('<h4>').text(`Author: ${authorNode}`);
     $('#modalText').append($released).append($authorEl);
     $('#modalLink').attr('href', grLink + bidNode);
-    $('#viewButton').text('View on Goodreads')
+    $('#viewButton').text('View on Goodreads').attr('disabled', true); //i have to disable this button for now, see note on GrLink
     $('#modal').toggleClass('hidden');
   });
 }
