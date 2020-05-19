@@ -13,11 +13,8 @@ const scrubURL = (string) => {
 }
 
 //function to show modal - content
-const showModal = (title, content) => {
-  //console.log(title, content);
-  $('#modalTitle').text(title);
-  $('#modalText').text(content);
-  $('#modal').toggleClass('hidden');
+const showModal = (title, content, linkText) => {
+  
 }
 
 //return specific omdb result - this will make another call to the omdb api to return top result
@@ -43,8 +40,15 @@ const outputMovie = (movieData) => {
   $metaScore = $('<h4>').text(`Metascore: ${movieData.Metascore}`);
   $('#movDescrip').append($year);
   $('#movDescrip').append($metaScore);
-  $('#showMDets').on('click', () => {
-    showModal(`${movieData.Title}`,`View more information on IMDB: ${ imdbLink + linkID}</a>` )
+  $('#showMDets').on('click', () => { //moved the makeModal function within the book and movie methods
+    $('#modalTitle').text(movieData.Title);
+    $released = $('<h4>').text(`Year: ${movieData.Released}`);
+    $directorEl = $('<h4>').text(`Director: ${movieData.Director}`);
+    $plotEl = $('<h4>').text(`Plot: ${movieData.Plot}`);
+    $('#modalText').append($released).append($directorEl).append($plotEl);
+    $('#modalLink').attr('href', imdbLink + linkID);
+    $('#viewButton').text('View on IMDB')
+    $('#modal').toggleClass('hidden');
   });
 }
 
@@ -56,20 +60,27 @@ const outputBookData = (xmlData) => {
   firstWork = allWorks[0];
   allBooks = $(xmlData).find("best_book"); //selects all best_book XML items
   firstBook = allBooks[0];
+  console.log(firstBook)
   var avgRating = $(firstWork).find('average_rating').text();
   var pubYear = $(firstWork).find('original_publication_year').text();
-  var fidNode = $(firstWork).find('id').text();//TODO - which of these gets bookid?
   var bidNode = $(firstBook).find('id').text();
+  var authorNode = $(firstBook).find('author').find('name').text();
   var titleNode = $(firstBook).find('title').text();
   var imageNode = $(firstBook).find('image_url').text();
   $year = $('<h4>').text(`Year: ${pubYear}`)
+  $released = $('<h4>').text(`Year: ${pubYear}`)
   $score = $('<h4>').text(`Review Average: ${avgRating} `);
   $('#bookDescrip').append($year);
   $('#bookDescrip').append($score);
   $('#bookTitle').text(titleNode);
   $('#bookImg').attr('src', imageNode);
   $('#showBDets').on('click', () => {
-    showModal(titleNode, `View more information on Goodreads: ${grLink + fidNode}`) //this link isn't working properly
+    $('#modalTitle').text(titleNode);
+    $authorEl = $('<h4>').text(`Author: ${authorNode}`);
+    $('#modalText').append($released).append($authorEl);
+    $('#modalLink').attr('href', grLink + bidNode);
+    $('#viewButton').text('View on Goodreads')
+    $('#modal').toggleClass('hidden');
   });
 }
 
@@ -118,8 +129,9 @@ $(() => {
     e.preventDefault();
     searchOMDB(searchString);
     searchGR(searchString);
-    $('#movieRes').removeClass('hidden'); //TODO - fix this behavior - need to pop up once, then just update
+    $('#movieRes').removeClass('hidden');
     $('#bookRes').removeClass('hidden');
+    $('#search').text(''); // why is this not working
   })
  
   $('#modalClose').on('click', () => {
