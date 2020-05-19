@@ -45,6 +45,7 @@ h1 {
 }
 
 #mediaCompare img {
+  align-self: center;
   max-height: 160px;
   max-width: 100px;
   padding-right: 5px;
@@ -55,8 +56,7 @@ h1 {
   border: solid #a5a5a5ff 1px;
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
+  align-items: center;
   padding: 5px;
   width: 45%;
 }
@@ -65,8 +65,13 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-self: center;
   justify-content: center;
   align-content: center;
+}
+
+#movDescrip, #bookDescrip {
+  align-self: center;
 }
 
 .descriptionDiv h4 {
@@ -77,10 +82,11 @@ h1 {
   background-color: #8c271eff;
   color: white;
   border-radius: 4px;
-  height: 4em;
+  height: 2em;
   margin-top: 30px;
   width: 65%;
   align-self: center;
+  font-size: medium;
 }
 
 /* I borrowed the concepts from the modal exercise to help create this modal */
