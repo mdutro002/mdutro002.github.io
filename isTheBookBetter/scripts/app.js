@@ -6,15 +6,22 @@
 //https://www.geeksforgeeks.org/javascript-trigger-a-button-on-enter-key/
 
 
-//cleans up text input from form on page and scrubs it for calling the api
+//cleans up text input and scrubs it for calling the apis
 const scrubURL = (string) => {
   let formattedString = string.replace(/\s/g, '+');
   return formattedString;
 }
 
-//function to show modal - content
-const showModal = (title, content, linkText) => {
-  
+//function to compare scores
+const calcScore = (movieScore, bookScore) => {
+  let compScore = (bookScore * 20);
+  if (movieScore > compScore) {
+    console.log('movie')
+  } else if (movieScore < compScore) {
+    console.log('book')
+  }else if (movieScore == compScore){
+    console.log('tie')
+  }
 }
 
 //return specific omdb result - this will make another call to the omdb api to return top result
@@ -24,7 +31,7 @@ const returnMovie = (imdbID) => {
     $.ajax({
       url: startingURL + queryParam + imdbID,
       type: 'GET',
-      '$limit': 10
+      limit: 10
     }).done(function(movieData){
       outputMovie(movieData);
   });
@@ -37,7 +44,7 @@ const outputMovie = (movieData) => {
   $('#movieImg').attr('src', movieData.Poster); //sets poster image
   $('#movieTitle').text(movieData.Title) //sets title
   $year = $('<h4>').text(`Year: ${movieData.Year}`) 
-  $metaScore = $('<h4>').text(`Metascore: ${movieData.Metascore}`);
+  var $metaScore = $('<h4>').text(`Metascore: ${movieData.Metascore}`);
   $('#movDescrip').append($year);
   $('#movDescrip').append($metaScore);
   $('#showMDets').on('click', () => { //moved the makeModal function within the book and movie methods
@@ -67,7 +74,6 @@ const outputBookData = (xmlData) => {
   var authorNode = $(firstBook).find('author').find('name').text();
   var titleNode = $(firstBook).find('title').text();
   var imageNode = $(firstBook).find('image_url').text();
-  console.log(grLink + bidNode);
   $byear = $('<h4>').text(`Year: ${pubYear}`)
   $released = $('<h4>').text(`Year: ${pubYear}`)
   $score = $('<h4>').text(`Review Average: ${avgRating} `);
@@ -89,7 +95,7 @@ const outputBookData = (xmlData) => {
 //goodreads search method call
 const searchGR = (searchString) => {
   let cleanSearch = scrubURL(searchString);
-  let apiKey = '?key=RnKpwA2VkQwJ2eVXmElg'
+  let apiKey = '?key=Y02AhEfGVJ8lopaPWUuVA'
   let queryParam = '&q='
   $.ajax({
     url: 'https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search/index.xml' + apiKey + queryParam + cleanSearch,
@@ -127,14 +133,15 @@ $(() => {
   $('#searchPrompt').on('click', (e) => {
     let searchString = $('#search').val();
     if (searchString === "") {
-      console.log('empty string! aborting search');
+      alert('empty string! aborting search');
+    } else {
+      e.preventDefault();
+      searchOMDB(searchString);
+      searchGR(searchString);
+      $('#movieRes').removeClass('hidden');
+      $('#bookRes').removeClass('hidden');
+      $search.text(" "); // why is this not working?
     }
-    e.preventDefault();
-    searchOMDB(searchString);
-    searchGR(searchString);
-    $('#movieRes').toggleClass('hidden');
-    $('#bookRes').toggleClass('hidden');
-    $search.empty(); // why is this not working?
   })
  
   $('#modalClose').on('click', () => {
