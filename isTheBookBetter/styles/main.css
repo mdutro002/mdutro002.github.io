@@ -152,4 +152,7 @@ h1 {
     width: 100%
   }
 
+  #showBDets, #showMDets {
+    font-size: .5em;
+  }
 }

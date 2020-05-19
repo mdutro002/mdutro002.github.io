@@ -43,8 +43,9 @@ const outputMovie = (movieData) => {
   $('#movDescrip').empty(); //clears details from movie
   $('#movieImg').attr('src', movieData.Poster); //sets poster image
   $('#movieTitle').text(movieData.Title) //sets title
-  $year = $('<h4>').text(`Year: ${movieData.Year}`) 
-  var $metaScore = $('<h4>').text(`Metascore: ${movieData.Metascore}`);
+  var $year = $('<h4>').text(`Year: ${movieData.Year}`) 
+  var movieScore = movieData.Metascore;
+  var $metaScore = $('<h4>').text(`Metascore: ${movieScore}`);
   $('#movDescrip').append($year);
   $('#movDescrip').append($metaScore);
   $('#showMDets').on('click', () => { //moved the makeModal function within the book and movie methods
@@ -58,17 +59,18 @@ const outputMovie = (movieData) => {
     $('#viewButton').text('View on IMDB')
     $('#modal').toggleClass('hidden');
   });
+  return movieScore;
 }
 
 //traverses xml data returned from goodreads api and pushes to bookResult div
 const outputBookData = (xmlData) => {
   grLink = 'https://www.goodreads.com/book/show/' //I cannot use this link right now as there's an issue with the xml id's as they are output
   $('#bookDescrip').empty();
-  allWorks = $(xmlData).find("work"); //selects XML elements at a slightly higher level
-  firstWork = allWorks[0]; //selects first result from works
-  allBooks = $(xmlData).find("best_book"); //selects all best_book XML items
-  firstBook = allBooks[0]; //selects first result from best_books
-  var avgRating = $(firstWork).find('average_rating').text();//gets relevant data from xml objects
+  allWorks = $(xmlData).find("work"); //This is me wrestling with the layers of the XML output
+  firstWork = allWorks[0]; 
+  allBooks = $(xmlData).find("best_book"); 
+  firstBook = allBooks[0]; 
+  var avgRating = $(firstWork).find('average_rating').text();//gets relevant data from xml objects defined above
   var pubYear = $(firstWork).find('original_publication_year').text();
   var bidNode = $(firstBook).find('best_book').find('id').text();
   var authorNode = $(firstBook).find('author').find('name').text();
@@ -77,7 +79,7 @@ const outputBookData = (xmlData) => {
   $byear = $('<h4>').text(`Year: ${pubYear}`)
   $released = $('<h4>').text(`Year: ${pubYear}`)
   $score = $('<h4>').text(`Review Average: ${avgRating} `);
-  $('#bookDescrip').append($byear);
+  $('#bookDescrip').append($byear); //constructs book information div
   $('#bookDescrip').append($score);
   $('#bookTitle').text(titleNode);
   $('#bookImg').attr('src', imageNode);
