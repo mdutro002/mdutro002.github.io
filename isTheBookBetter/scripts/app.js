@@ -33,7 +33,7 @@ const returnMovie = (imdbID) => {
 const outputMovie = (movieData) => {
   imdbLink = `https://www.imdb.com/title/`
   linkID = movieData.imdbID;
-  $('#movDescrip').empty(); //clears details
+  $('#movDescrip').empty(); //clears details from movie
   $('#movieImg').attr('src', movieData.Poster); //sets poster image
   $('#movieTitle').text(movieData.Title) //sets title
   $year = $('<h4>').text(`Year: ${movieData.Year}`) 
@@ -41,6 +41,7 @@ const outputMovie = (movieData) => {
   $('#movDescrip').append($year);
   $('#movDescrip').append($metaScore);
   $('#showMDets').on('click', () => { //moved the makeModal function within the book and movie methods
+    $()
     $('#modalTitle').text(movieData.Title);
     $released = $('<h4>').text(`Year: ${movieData.Released}`);
     $directorEl = $('<h4>').text(`Director: ${movieData.Director}`);
@@ -57,24 +58,24 @@ const outputBookData = (xmlData) => {
   grLink = 'https://www.goodreads.com/book/show/'
   $('#bookDescrip').empty();
   allWorks = $(xmlData).find("work"); //selects XML elements at a slightly higher level
-  firstWork = allWorks[0];
+  firstWork = allWorks[0]; //selects first result from works
   allBooks = $(xmlData).find("best_book"); //selects all best_book XML items
-  firstBook = allBooks[0];
-  console.log(firstBook)
-  var avgRating = $(firstWork).find('average_rating').text();
+  firstBook = allBooks[0]; //selects first result from best_books
+  var avgRating = $(firstWork).find('average_rating').text();//gets relevant data from xml objects
   var pubYear = $(firstWork).find('original_publication_year').text();
   var bidNode = $(firstBook).find('id').text();
   var authorNode = $(firstBook).find('author').find('name').text();
   var titleNode = $(firstBook).find('title').text();
   var imageNode = $(firstBook).find('image_url').text();
-  $year = $('<h4>').text(`Year: ${pubYear}`)
+  $byear = $('<h4>').text(`Year: ${pubYear}`)
   $released = $('<h4>').text(`Year: ${pubYear}`)
   $score = $('<h4>').text(`Review Average: ${avgRating} `);
-  $('#bookDescrip').append($year);
+  $('#bookDescrip').append($byear);
   $('#bookDescrip').append($score);
   $('#bookTitle').text(titleNode);
   $('#bookImg').attr('src', imageNode);
-  $('#showBDets').on('click', () => {
+  $('#showBDets').on('click', () => { //generates modal information on click
+    $('#modalText').empty();
     $('#modalTitle').text(titleNode);
     $authorEl = $('<h4>').text(`Author: ${authorNode}`);
     $('#modalText').append($released).append($authorEl);
@@ -115,6 +116,7 @@ const searchOMDB = (searchString) => {
 
 //Start on-page calls
 $(() => {
+  $search = $('#search');
   //lets user submit form by hitting enter
   $("#search").keypress(function(event) { 
     if (event.keyCode === 13) { 
@@ -129,12 +131,12 @@ $(() => {
     e.preventDefault();
     searchOMDB(searchString);
     searchGR(searchString);
-    $('#movieRes').removeClass('hidden');
-    $('#bookRes').removeClass('hidden');
-    $('#search').text(''); // why is this not working
+    $('#movieRes').toggleClass('hidden');
+    $('#bookRes').toggleClass('hidden');
+    $search.empty(); // why is this not working?
   })
  
   $('#modalClose').on('click', () => {
-    $('#modal').toggleClass('hidden');
+    $('#modal').addClass('hidden');
   })
 })
