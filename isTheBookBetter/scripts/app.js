@@ -142,7 +142,9 @@ $(() => {
       searchGR(searchString);
       $('#movieRes').removeClass('hidden');
       $('#bookRes').removeClass('hidden');
-      $search.text(" "); // why is this not working?
+      $search.text(" "); // why is this not working??
+      $mScore = $('movDescript').children().eq
+      calcScore($('movDescrip'))
     }
   })
  
