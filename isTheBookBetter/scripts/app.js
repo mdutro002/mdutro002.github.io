@@ -12,7 +12,7 @@ const scrubURL = (string) => {
   return formattedString;
 }
 
-//function to compare scores
+//function to compare scores --having issue parsing text inputs
 const calcScore = (movieScore, bookScore) => {
   let compScore = (bookScore * 20);
   console.log(compScore);
@@ -141,10 +141,12 @@ $(() => {
       $('#movieRes').removeClass('hidden');
       $('#bookRes').removeClass('hidden');
       $search.text(" "); // why is this not working??
-
-      // $mScore = $('#metascoreContainer').val();
-      // $bScore = $('#grscoreContainer').val();
-      calcScore($mScore, $bScore);
+      setTimeout(function(){
+        $mScore = $('#metascoreContainer').text();
+        $bScore = $('#grscoreContainer').text()
+        calcScore($mScore, $bScore);
+      }, 8000);
+      //this is where I'd be calculating scores if things would bother returning
     }
   })
  
