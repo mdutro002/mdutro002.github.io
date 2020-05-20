@@ -48,7 +48,7 @@ const outputMovie = (movieData) => {
   var movieScore = movieData.Metascore;
   $('#movDescrip').prepend($year);
   $('#metascoreContainer').text(movieScore);
-  $('#showMDets').on('click', () => { //moved the makeModal function within the book and movie methods
+  $('#showMDets').on('click', () => { //populates modal with information
     $('#modalText').empty();
     $('#modalTitle').text(movieData.Title);
     $released = $('<h4>').text(`Year: ${movieData.Released}`);
