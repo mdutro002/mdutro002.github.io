@@ -12,7 +12,7 @@ const scrubURL = (string) => {
   return formattedString;
 }
 
-//function to compare scores --having issue parsing text inputs
+//function to compare scores, depending on result, adjusts recommendation text
 const calcScore = (movieScore, bookScore) => {
   $scoreDiv = $('#compareResults')
   let compScore = (bookScore * 20);
@@ -31,7 +31,7 @@ const calcScore = (movieScore, bookScore) => {
   }
 }
 
-//return specific omdb result - this will make another call to the omdb api to return top result
+//return specific omdb result - this will make another call to the omdb api to return top result using its id
 const returnMovie = (imdbID) => {
   let startingURL = 'https://www.omdbapi.com/?apikey=3796b8a3'
   let queryParam = '&i=';
@@ -43,6 +43,7 @@ const returnMovie = (imdbID) => {
   });
 }
 
+//clears former inputs (if any), parses through data object, and appends data to DOM
 const outputMovie = (movieData) => {
   imdbLink = `https://www.imdb.com/title/`
   linkID = movieData.imdbID;
@@ -53,7 +54,7 @@ const outputMovie = (movieData) => {
   var movieScore = movieData.Metascore;
   $('#movDescrip').prepend($year);
   $('#metascoreContainer').text(movieScore);
-  $('#showMDets').on('click', () => { //populates modal with information
+  $('#showMDets').on('click', () => { //populates modal with information on click
     $('#modalText').empty();
     $('#modalTitle').text(movieData.Title);
     $released = $('<h4>').text(`Year: ${movieData.Released}`);
@@ -145,13 +146,12 @@ $(() => {
       searchGR(searchString);
       $('#movieRes').removeClass('hidden');
       $('#bookRes').removeClass('hidden');
-      $search.text(" "); // why is this not working??
-      setTimeout(function(){
+      $search.text(" "); // this still isn't working, but it's a low priority bug
+      setTimeout(function(){ //after four seconds (long enough for DOM to populate with API data), calculates scores.
         $mScore = $('#metascoreContainer').text();
         $bScore = $('#grscoreContainer').text()
         calcScore($mScore, $bScore);
       }, 4000);
-      //this is where I'd be calculating scores if things would bother returning
     }
   })
  
