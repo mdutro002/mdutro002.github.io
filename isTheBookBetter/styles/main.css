@@ -176,4 +176,9 @@ h1 {
   #showBDets, #showMDets {
     font-size: .5em;
   }
+
+  #modalText {
+    font-size: smaller;
+  }
+
 }
