@@ -4,7 +4,7 @@
 //https://api.jquery.com/jQuery.parseXML/ 
 //https://www.w3schools.com/css/css_rwd_viewport.asp
 //https://www.geeksforgeeks.org/javascript-trigger-a-button-on-enter-key/
-
+//https://stackoverflow.com/questions/1262930/jquery-empty-div-except-for-matched-elements
 
 //cleans up text input and scrubs it for calling the apis
 const scrubURL = (string) => {
@@ -15,6 +15,8 @@ const scrubURL = (string) => {
 //function to compare scores
 const calcScore = (movieScore, bookScore) => {
   let compScore = (bookScore * 20);
+  console.log(compScore);
+  console.log(movieScore);
   if (movieScore > compScore) {
     console.log('movie')
   } else if (movieScore < compScore) {
@@ -31,7 +33,6 @@ const returnMovie = (imdbID) => {
     $.ajax({
       url: startingURL + queryParam + imdbID,
       type: 'GET',
-      limit: 10
     }).done(function(movieData){
       outputMovie(movieData);
   });
@@ -40,14 +41,13 @@ const returnMovie = (imdbID) => {
 const outputMovie = (movieData) => {
   imdbLink = `https://www.imdb.com/title/`
   linkID = movieData.imdbID;
-  $('#movDescrip').empty(); //clears details from movie
+  $('#movDescrip').find('*').not('dl').not('dt').not('dd').remove();  //Hahaha, this has NO right to work, but it does. Removes everything but DL and child els on new search
   $('#movieImg').attr('src', movieData.Poster); //sets poster image
   $('#movieTitle').text(movieData.Title) //sets title
   var $year = $('<h4>').text(`Year: ${movieData.Year}`) 
   var movieScore = movieData.Metascore;
-  var $metaScore = $('<h4>').text(`Metascore: ${movieScore}`);
-  $('#movDescrip').append($year);
-  $('#movDescrip').append($metaScore);
+  $('#movDescrip').prepend($year);
+  $('#metascoreContainer').text(movieScore);
   $('#showMDets').on('click', () => { //moved the makeModal function within the book and movie methods
     $('#modalText').empty();
     $('#modalTitle').text(movieData.Title);
@@ -65,7 +65,7 @@ const outputMovie = (movieData) => {
 //traverses xml data returned from goodreads api and pushes to bookResult div
 const outputBookData = (xmlData) => {
   grLink = 'https://www.goodreads.com/book/show/' //I cannot use this link right now as there's an issue with the xml id's as they are output
-  $('#bookDescrip').empty();
+  $('#bookDescrip').find('*').not('dl').not('dt').not('dd').remove();  //Hahaha, this has NO right to work, but it does. Removes everything but DL and child els on new search
   allWorks = $(xmlData).find("work"); //This is me wrestling with the layers of the XML output
   firstWork = allWorks[0]; 
   allBooks = $(xmlData).find("best_book"); 
@@ -78,9 +78,8 @@ const outputBookData = (xmlData) => {
   var imageNode = $(firstBook).find('image_url').text();
   $byear = $('<h4>').text(`Year: ${pubYear}`)
   $released = $('<h4>').text(`Year: ${pubYear}`)
-  $score = $('<h4>').text(`Review Average: ${avgRating} `);
-  $('#bookDescrip').append($byear); //constructs book information div
-  $('#bookDescrip').append($score);
+  $('#bookDescrip').prepend($byear); //constructs book information div
+  $('#grscoreContainer').text(avgRating);
   $('#bookTitle').text(titleNode);
   $('#bookImg').attr('src', imageNode);
   $('#showBDets').on('click', () => { //generates modal information on click
@@ -113,7 +112,6 @@ const searchOMDB = (searchString) => {
   let cleanSearch = scrubURL(searchString);
   let startingURL = 'https://www.omdbapi.com/?apikey=3796b8a3'
   let queryParam = '&s=';
-
   $.ajax({
     url: startingURL + queryParam + cleanSearch,
     type: 'GET',
@@ -131,7 +129,7 @@ $(() => {
     if (event.keyCode === 13) { 
         $("#searchPrompt").click(); 
     } 
-})
+  })
   $('#searchPrompt').on('click', (e) => {
     let searchString = $('#search').val();
     if (searchString === "") {
@@ -143,8 +141,10 @@ $(() => {
       $('#movieRes').removeClass('hidden');
       $('#bookRes').removeClass('hidden');
       $search.text(" "); // why is this not working??
-      $mScore = $('movDescript').children().eq
-      calcScore($('movDescrip'))
+
+      // $mScore = $('#metascoreContainer').val();
+      // $bScore = $('#grscoreContainer').val();
+      calcScore($mScore, $bScore);
     }
   })
  

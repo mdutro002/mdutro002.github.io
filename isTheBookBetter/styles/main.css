@@ -70,6 +70,16 @@ h1 {
   align-content: center;
 }
 
+.dataList {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+}
+
+.descriptionDiv dd {
+  margin-left: 2px;
+}
+
 #movDescrip, #bookDescrip {
   align-self: center;
 }
