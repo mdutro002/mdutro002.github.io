@@ -14,15 +14,20 @@ const scrubURL = (string) => {
 
 //function to compare scores --having issue parsing text inputs
 const calcScore = (movieScore, bookScore) => {
+  $scoreDiv = $('#compareResults')
   let compScore = (bookScore * 20);
-  console.log(compScore);
-  console.log(movieScore);
   if (movieScore > compScore) {
     console.log('movie')
+    $watchMovie = $('<h2>').text("Watch the Movie!")
+    $scoreDiv.append($watchMovie);
   } else if (movieScore < compScore) {
     console.log('book')
+    $readBook = $('<h2>').text("Read the Book!")
+    $scoreDiv.append($readBook);
   }else if (movieScore == compScore){
     console.log('tie')
+    $moot = $('<h2>').text(" Either!")
+    $scoreDiv.append($moot);
   }
 }
 
@@ -145,7 +150,7 @@ $(() => {
         $mScore = $('#metascoreContainer').text();
         $bScore = $('#grscoreContainer').text()
         calcScore($mScore, $bScore);
-      }, 8000);
+      }, 4000);
       //this is where I'd be calculating scores if things would bother returning
     }
   })
