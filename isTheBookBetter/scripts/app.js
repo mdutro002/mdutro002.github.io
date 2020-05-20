@@ -15,17 +15,15 @@ const scrubURL = (string) => {
 //function to compare scores, depending on result, adjusts recommendation text
 const calcScore = (movieScore, bookScore) => {
   $scoreDiv = $('#compareResults')
+  $scoreDiv.empty();
   let compScore = (bookScore * 20);
   if (movieScore > compScore) {
-    console.log('movie')
     $watchMovie = $('<h2>').text("Watch the Movie!")
     $scoreDiv.append($watchMovie);
   } else if (movieScore < compScore) {
-    console.log('book')
     $readBook = $('<h2>').text("Read the Book!")
     $scoreDiv.append($readBook);
   }else if (movieScore == compScore){
-    console.log('tie')
     $moot = $('<h2>').text(" Either!")
     $scoreDiv.append($moot);
   }
