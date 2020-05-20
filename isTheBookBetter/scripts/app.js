@@ -63,7 +63,6 @@ const outputMovie = (movieData) => {
     $('#viewButton').text('View on IMDB')
     $('#modal').toggleClass('hidden');
   });
-  return movieScore;
 }
 
 //traverses xml data returned from goodreads api and pushes to bookResult div

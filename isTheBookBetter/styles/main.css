@@ -149,6 +149,15 @@ h1 {
   max-width: 80%;
 }
 
+#modalText h4{
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+#modalLink {
+  margin-top: 5px;
+}
+
 #modalClose {
   align-self: flex-end;
 }
