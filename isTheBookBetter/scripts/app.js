@@ -89,7 +89,7 @@ const outputBookData = (xmlData) => {
     $authorEl = $('<h4>').text(`Author: ${authorNode}`);
     $('#modalText').append($released).append($authorEl);
     $('#modalLink').attr('href', grLink + bidNode);
-    $('#viewButton').text('View on Goodreads').attr('disabled', true); //i have to disable this button for now, see note on GrLink
+    $('#viewButton').text('disabled').attr('disabled', true); //i have to disable this button for now, see note on GrLink
     $('#modal').toggleClass('hidden');
   });
 }
