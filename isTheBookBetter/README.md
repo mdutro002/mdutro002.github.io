@@ -8,7 +8,12 @@ comparisons betweens data. So searching for "The Hobbit" will yield multiple res
 
 Because of the differences in indexing between the two API's used (Goodreads and OMDB), this project will need a little 
 love in the future to get more reliable results. This is going to require a bit more time than I have right now to devote to this project
-at the moment, but I do plan on improving this programmatically as much as I can 
+at the moment, but I do plan on improving this programmatically as much as I can.
+
+> Note:
+> Movie and book details are currently disabled due to a data issue that's going to take time to debug
+
+----
 
 
 ## Planned Features:
@@ -22,3 +27,4 @@ at the moment, but I do plan on improving this programmatically as much as I can
 
 * Api pulls are taking several seconds to load, which is giving false results on the "read the book/watch the movie" div
 * calls themselves could stand to be optimized, maybe even rewritten to run simultaneously and more efficiently. 
+
