@@ -1,0 +1,77 @@
+:root{
+--rich-black-fogra-39: #06070eff;
+--brunswick-green: #29524aff;
+--artichoke: #94a187ff;
+--khaki-web: #c5afa0ff;
+--baby-pink: #e9bcb7ff;
+}
+
+body{
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+nav {
+  width: 80%;
+  background-color: var(--artichoke);
+  color: white;
+  font-family: sans-serif;
+  padding: 8px;
+  margin-top: 20px;
+}
+
+nav a{
+  padding: 8px;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+nav a:hover{
+  background-color: var(--brunswick-green);
+}
+
+main {
+  width: 80%
+}
+
+#projectButtons{
+  padding: 15px;
+}
+
+#itbb{
+  padding: 3px;
+  border-radius: 5px;
+  background-color: #8c271eff;
+  color: white;
+}
+
+#dungeonCore{
+  padding: 3px;
+  border-radius: 5px;
+  background-color: #373d20ff;
+  color: white;
+}
+
+.project{
+  background-color: white;
+  padding: 30px;
+  margin-top: 20px;
+}
+
+.project img{
+  width: 200px;
+}
+
+.project a{
+  color: black;
+  text-decoration: underline;
+  size: .5em;
+}
