@@ -77,6 +77,17 @@ main {
   size: .5em;
 }
 
+
+.project h3{
+  color: var(--brunswick-green);
+  text-decoration: none;
+}
+
+.project h3:hover{
+  text-decoration: underline;
+}
+
 footer{
   background-color: var(--artichoke);
 }
+
