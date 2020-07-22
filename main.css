@@ -16,9 +16,16 @@ body{
   font-family: sans-serif;
 }
 
+h1{
+  text-shadow: 2px 2px rgb(170, 171, 172);
+}
+
 nav {
   width: 80%;
   background-color: var(--artichoke);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   color: white;
   font-family: sans-serif;
   padding: 8px;
@@ -27,6 +34,10 @@ nav {
 
 nav a{
   padding: 8px;
+}
+
+nav img{
+  max-width: 20px;
 }
 
 a{
@@ -42,23 +53,12 @@ main {
   width: 80%
 }
 
-#projectButtons{
-  padding: 15px;
+.arrow{
+ padding: 10px;
+ max-width: 25px;
+ max-height: 20px;
 }
 
-#itbb{
-  padding: 3px;
-  border-radius: 5px;
-  background-color: #8c271eff;
-  color: white;
-}
-
-#dungeonCore{
-  padding: 3px;
-  border-radius: 5px;
-  background-color: #373d20ff;
-  color: white;
-}
 
 .project{
   background-color: white;
@@ -68,10 +68,15 @@ main {
 
 .project img{
   width: 200px;
+  align-self: center;
 }
 
 .project a{
   color: black;
   text-decoration: underline;
   size: .5em;
+}
+
+footer{
+  background-color: var(--artichoke);
 }
