@@ -14,6 +14,7 @@ body{
   align-items: center;
   margin: 0;
   font-family: sans-serif;
+  height: 100vh;
 }
 
 h1{
@@ -26,14 +27,15 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
   color: white;
   font-family: sans-serif;
-  padding: 8px;
   margin-top: 20px;
+  padding: 2px;
 }
 
 nav a{
-  padding: 8px;
+  padding: 9px;
 }
 
 nav img{
@@ -50,20 +52,28 @@ nav a:hover{
 }
 
 main {
-  width: 80%
-}
-
-.arrow{
- padding: 10px;
- max-width: 25px;
- max-height: 20px;
+  width: 80%;
+  height: 100%;
+  margin-bottom: 50px;
 }
 
 
 .project{
   background-color: white;
   padding: 30px;
+  margin-top: 12px;
+}
+
+.toggle{
+  background-color: white;
+  color: var(--khaki-web);
+  font-size: large;
+  padding: 5px;
   margin-top: 20px;
+}
+
+.toggle p{
+  padding-left: 25px;
 }
 
 .project img{
@@ -77,7 +87,6 @@ main {
   size: .5em;
 }
 
-
 .project h3{
   color: var(--brunswick-green);
   text-decoration: none;
@@ -87,7 +96,41 @@ main {
   text-decoration: underline;
 }
 
-footer{
-  background-color: var(--artichoke);
+.hidden {
+  display: none;
 }
 
+.holdingElement {
+  height: 40px;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+footer{
+  background-color: var(--artichoke);
+  height: 30px;
+  margin-top: 20px;
+  padding: 8px 15px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (min-width: 1000px){
+  body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  nav {
+    max-width: 800px;
+  }
+
+  main{
+    align-self: center;
+    max-width: 800px;
+  }
+
+}

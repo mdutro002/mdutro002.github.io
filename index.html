@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Madeline Dutro</title>
+  <title>Madeline Rainwater (Dutro)</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
   <script
@@ -22,26 +22,40 @@
     <a href="mailto:dutro.madeline@gmail.com"><img src="assets/mail.png"></a>
   </nav>
   <main>
-    <h1 style="font-family: 'Montserrat', sans-serif;">Madeline Rainwater</h1>
+    <div class="holdingElement"> <!-- Need this div to hold space for fade in - looks janky otherwise -->
+      <h1 class="name hidden"style="font-family: 'Montserrat', sans-serif;">Madeline Rainwater</h1>
+    </div>
     <div id="projectContainer">
-      <div class="project">
-          <p><span style="font-size: large; color: #c5afa0ff;">About Me:</span> I am a full-stack developer with a proclivity for detailed, foolproof back-end engineering and data management. </p>
+      <div id="aboutMeToggle" class="toggle">
+        <p>About Me</p>
       </div>
-      <div class="project">
-          <a href="https://mdutro002.github.io/isTheBookBetter/" target="_blank"><h3>Is the Book Better?</h3></a>
-          <a href="https://mdutro002.github.io/isTheBookBetter/" target="_blank"><img src="assets/itbb.png"></a>
-        <p>This app compare Metacritic ratings to Goodreads reviews and compares their scores to help you decide whether to read the book or watch the movie</p>
-        <a href="https://github.com/mdutro002/mdutro002.github.io/tree/master/isTheBookBetter">Github Repository</a>
+      <div class="aboutMe project hidden">
+          <img src="https://bespokepixels.files.wordpress.com/2020/05/cropped-me.icon_.png">
+          <p> </p>
       </div>
-      <div class="project">
-          <a href="https://quiet-cove-97838.herokuapp.com/" target="_blank"><h3>DungeonCore</h3></a>
-          <a href="https://quiet-cove-97838.herokuapp.com/" target="_blank"><img src="assets/dcore.png"></a>
-        <p>Webapp to create and manage DnD campaigns</p>
-        <a href="https://github.com/mdutro002/dungeonCore">Github Repository</a>
+      <div id="projectToggle" class="toggle">
+        <p>Projects</p>
       </div>
+        <div class="proj project hidden">
+            <a href="https://mdutro002.github.io/isTheBookBetter/" target="_blank"><h3>Is the Book Better?</h3></a>
+            <a href="https://mdutro002.github.io/isTheBookBetter/" target="_blank"><img src="assets/itbb.png"></a>
+          <p>This app compare Metacritic ratings to Goodreads reviews and compares their scores to help you decide whether to read the book or watch the movie</p>
+          <a href="https://github.com/mdutro002/mdutro002.github.io/tree/master/isTheBookBetter">Github Repository</a>
+        </div>
+        <div class="proj project hidden">
+            <a href="https://quiet-cove-97838.herokuapp.com/" target="_blank"><h3>DungeonCore</h3></a>
+            <a href="https://quiet-cove-97838.herokuapp.com/" target="_blank"><img src="assets/dcore.png"></a>
+          <p>Webapp to create and manage DnD campaigns</p>
+          <a href="https://github.com/mdutro002/dungeonCore">Github Repository</a>
+        </div>
+        <div id="" class="toggle">
+          <a href=""><p>Resume</p></a>
+        </div>
     </div>
   </main>
-  <footer></footer>
+  <footer>
+    <p>Made by Madeline with &#10084	</p>
+  </footer>
 </body>
 </html>
 
