@@ -76,6 +76,10 @@ main {
   padding-left: 25px;
 }
 
+.toggle a{
+  color: var(--khaki-web);
+}
+
 .project img{
   width: 200px;
   align-self: center;
