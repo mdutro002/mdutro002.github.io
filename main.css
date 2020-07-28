@@ -38,8 +38,8 @@ h1{
 #heroImage h1{
   text-shadow: none;
   position: absolute;
-  bottom: 80px;
-  right: 100px;
+  bottom: 10%;
+  right: 15%;
 }
 
 nav {
@@ -190,9 +190,17 @@ footer{
     align-items: center;
     height: 100vh;
   }
+  #heroImage{
+    max-width: 800px;
+  }
+
+  #heroImage img{
+    max-width: 800px;
+  }
 
   nav {
     max-width: 800px;
+    padding: 10px;
   }
 
   main{
