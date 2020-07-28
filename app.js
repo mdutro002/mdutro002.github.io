@@ -1,7 +1,6 @@
 $(() => {
   //Name In
   $('.name').slideDown('slow').removeClass('hidden');
-  $('.aboutMe').slideToggle('slow').toggleClass('hidden');
 
   //AboutMe Toggle
   $('#aboutMeToggle').click(function (){
