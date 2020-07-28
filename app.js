@@ -11,4 +11,9 @@ $(() => {
   $('#projectToggle').click(function (){
     $('.proj').slideToggle().toggleClass('hidden');
   });
+
+  //Resume Toggle
+  $('#resumeToggle').click(function(){
+    $('.resume').slideToggle().toggleClass('hidden');
+  })
 }); //end onready
