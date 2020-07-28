@@ -116,6 +116,11 @@ main {
   justify-self: center;
 }
 
+.resume a{
+  align-self: center;
+  color: red;
+}
+
 footer{
   background-color: var(--artichoke);
   height: 30px;
