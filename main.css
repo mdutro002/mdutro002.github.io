@@ -145,7 +145,7 @@ footer{
   display: none;
 }
 
-
+/* Cell phone display optimizations */
 @media only screen and (max-width: 425px){
   html, body{
     width: 100vw;
@@ -161,7 +161,7 @@ footer{
   }
 }
 
-
+/* Widescreen optimizations and adjustments */
 @media only screen and (min-width: 1000px){
   body{
     display: flex;
