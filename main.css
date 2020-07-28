@@ -152,9 +152,11 @@ footer{
   }
   nav{
     max-width: 100%;
+    min-height: 15px;
   }
   footer{
     max-width: 100%;
+    min-height: 15px;
   }
   .name {
     font-size: 24px !important;
