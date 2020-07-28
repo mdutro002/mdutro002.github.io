@@ -145,6 +145,23 @@ footer{
   display: none;
 }
 
+
+@media only screen and (max-width: 425px){
+  html, body{
+    width: 100vw;
+  }
+  nav{
+    max-width: 100%;
+  }
+  footer{
+    max-width: 100%;
+  }
+  .name {
+    font-size: 24px !important;
+  }
+}
+
+
 @media only screen and (min-width: 1000px){
   body{
     display: flex;
