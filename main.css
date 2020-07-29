@@ -52,7 +52,6 @@ nav {
   align-items: center;
   color: white;
   font-family: sans-serif;
-  margin-top: 20px;
   padding: 2px;
 }
 
@@ -126,6 +125,24 @@ main {
 .project a:hover{
   text-decoration: underline;
 }
+
+.techTags ul{
+  display: flex;
+  flex-direction: row;
+  margin-left: 0;
+}
+
+.techTags p{
+  background-color: var(--baby-pink);
+  color: white;
+  border-radius: 15px;
+  text-decoration: none;
+  max-width: 100px;
+  padding-left: 10px;
+  margin-right: 10px;
+}
+
+
 
 .holdingElement {
   height: 40px;
