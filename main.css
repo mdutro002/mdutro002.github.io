@@ -133,13 +133,13 @@ main {
 }
 
 .techTags p{
-  background-color: var(--baby-pink);
+  background-color: black;
   color: white;
   border-radius: 15px;
   text-decoration: none;
   max-width: 100px;
-  padding-left: 10px;
-  margin-right: 10px;
+  padding: 3px 12px;
+  margin-right: 5px;
 }
 
 
