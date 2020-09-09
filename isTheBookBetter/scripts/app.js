@@ -31,12 +31,14 @@ const calcScore = (movieScore, bookScore) => {
 
 //return specific omdb result - this will make another call to the omdb api to return top result using its id
 const returnMovie = (imdbID) => {
+  //prompt loading gif
   let startingURL = 'https://www.omdbapi.com/?apikey=3796b8a3'
   let queryParam = '&i=';
     $.ajax({
       url: startingURL + queryParam + imdbID,
       type: 'GET',
     }).done(function(movieData){
+      //end loading gif
       outputMovie(movieData);
   });
 }
@@ -98,6 +100,7 @@ const outputBookData = (xmlData) => {
 
 //goodreads search method call
 const searchGR = (searchString) => {
+  //prompt loading gif here
   let cleanSearch = scrubURL(searchString);
   let apiKey = '?key=Y02AhEfGVJ8lopaPWUuVA'
   let queryParam = '&q='
@@ -106,6 +109,7 @@ const searchGR = (searchString) => {
     type: 'GET',
     '$limit': 1
   }).done(function(data) {
+    //end loading gif here
     outputBookData(data);
   });
 }
@@ -156,3 +160,15 @@ $(() => {
     $('#modal').addClass('hidden');
   })
 })
+
+
+//function showLoadingMsg() {
+/*   $('body').append($('div').css({
+    position   : 'absolute',
+    width      : '100%',
+    height     : '100%',
+    zIndex     : 1000,
+    background : '#000',
+    opacity    : 0.5
+}).attr('id', 'loading-message'));
+} */
