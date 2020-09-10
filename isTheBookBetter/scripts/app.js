@@ -28,9 +28,7 @@ const calcScore = (movieScore, bookScore) => {
   }
 }
 
-const showLoadingGif = (thingToLoad) => {
-  //I want to be able to pass a divID in here to target, but I think I'm borking the syntax to do it.  
-  $divToLoad = $(`#${thingToLoad}`);
+const loadMovie = () => { //I couldn't figure out how to turn this into a single abstracted function, so this will be two more duplicate functions
   $divToLoad.append($('div').css({
     position: 'absolute',
     width: '100%',
@@ -38,7 +36,18 @@ const showLoadingGif = (thingToLoad) => {
     zIndex: 1000,
     background: '#000',
     opacity: 0.5
-  }).attr('id', 'loadingGif'));
+  }).attr('id', 'loadingMovie'));
+}
+
+const loadBook = () => {
+  $divToLoad.append($('div').css({
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    zIndex: 1000,
+    background: '#000',
+    opacity: 0.5
+  }).attr('id', 'loadingBook'));
 }
 
 //return specific omdb result - this will make another call to the omdb api to return top result using its id
@@ -142,6 +151,7 @@ const searchOMDB = (searchString) => {
 
 //Start on-page calls
 $(() => {
+
   $search = $('#search');
   //lets user submit form by hitting enter
   $("#search").keypress(function(event) { 
