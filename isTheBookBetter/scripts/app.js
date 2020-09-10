@@ -28,6 +28,19 @@ const calcScore = (movieScore, bookScore) => {
   }
 }
 
+const showLoadingGif = (thingToLoad) => {
+  //I want to be able to pass a divID in here to target, but I think I'm borking the syntax to do it.  
+  $divToLoad = $(`#${thingToLoad}`);
+  $divToLoad.append($('div').css({
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    zIndex: 1000,
+    background: '#000',
+    opacity: 0.5
+  }).attr('id', 'loadingGif'));
+}
+
 //return specific omdb result - this will make another call to the omdb api to return top result using its id
 const returnMovie = (imdbID) => {
   //prompt loading gif
@@ -162,15 +175,3 @@ $(() => {
     $('#modal').addClass('hidden');
   })
 })
-
-
-//function showLoadingMsg() {
-/*   $('body').append($('div').css({
-    position   : 'absolute',
-    width      : '100%',
-    height     : '100%',
-    zIndex     : 1000,
-    background : '#000',
-    opacity    : 0.5
-}).attr('id', 'loading-message'));
-} */
