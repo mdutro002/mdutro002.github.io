@@ -1,4 +1,3 @@
-/* eslint-disable */
 //RESOURCES:
 //https://www.goodreads.com/topic/show/17893514-cors-access-control-allow-origin
 //https://api.jquery.com/jQuery.parseXML/ 
@@ -137,6 +136,7 @@ $(() => {
         $("#searchPrompt").click(); 
     } 
   })
+  //main functionality block
   $('#searchPrompt').on('click', (e) => {
     let searchString = $('#search').val();
     if (searchString === "") {
@@ -147,7 +147,9 @@ $(() => {
       searchGR(searchString);
       $('#movieRes').removeClass('hidden');
       $('#bookRes').removeClass('hidden');
-      $search.text(" "); // this still isn't working, but it's a low priority bug
+      $('#search').val('');
+      $('#compareResults').empty();
+      $('#compareResults').append('<h2>Calculating...</h2>');
       setTimeout(function(){ //after four seconds (long enough for DOM to populate with API data), calculates scores.
         $mScore = $('#metascoreContainer').text();
         $bScore = $('#grscoreContainer').text()
