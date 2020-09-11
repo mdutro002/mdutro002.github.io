@@ -1,17 +1,20 @@
 ## Is The Book Better?
 
+### Description
 This is just a simple project to compare user reviews between books and their movie counterparts by using one search string
 to pull data from the OMDB and Goodreads APIs in a simple display.
 
+### Notes and Updates
 It's important to note that this prototype doesn't deal with the biggest issue this project faces, which is one-to-one 
 comparisons betweens data. So searching for "The Hobbit" will yield multiple results for movies, leading to potential issues.
 
 Because of the differences in indexing between the two API's used (Goodreads and OMDB), this project will need a little 
-love in the future to get more reliable results. This is going to require a bit more time than I have right now to devote to this project
-at the moment, but I do plan on improving this programmatically as much as I can.
+love in the future to get more reliable results.
+
+09-11-20: I'm looking to convert the Goodreads API calls (currently returning XML) to the GraphQL wrapper built by user mcshakes(https://github.com/mcshakes/good_wrap)
 
 > Note:
-> Book details are currently disabled due to a data issue that will likely be fixed by the GraphQL usage outlined below
+> Book details are currently disabled due to a data issue that will likely be fixed by the Goodreads API call rewrite
 
 ----
 
