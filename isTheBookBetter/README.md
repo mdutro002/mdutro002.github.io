@@ -11,20 +11,22 @@ love in the future to get more reliable results. This is going to require a bit 
 at the moment, but I do plan on improving this programmatically as much as I can.
 
 > Note:
-> Movie and book details are currently disabled due to a data issue that's going to take time to debug
+> Book details are currently disabled due to a data issue that will likely be fixed by the GraphQL usage outlined below
 
 ----
 
 
 ## Planned Features:
-
+* Convert the hacky XML parsing to GraphQL for the Goodreads API ** Top Priority **
 * loading animation while api inits and pulls. Currently each search takes approximately 3-8 seconds to run.
 * 'next result' button: adjust API to make multiple returns, and have this button iterate through those returns so one could get whatever movie version of "The Hobbit" they wanted to compare
 * 'add to to-read shelf' button: use OAuth to allow for users to push the resulting book to their to-read list after a search
 
 
+
 ## Known Bugs:
 
-* Api pulls are taking several seconds to load, which is giving false results on the "read the book/watch the movie" div
+~~* Api pulls are taking several seconds to load, which is giving false results on the "read the book/watch the movie" div ~~
 * calls themselves could stand to be optimized, maybe even rewritten to run simultaneously and more efficiently. 
+* Every other search, the modal won't correctly display - I suspect this is an issue with the jquery .toggleClass() method. 
 
