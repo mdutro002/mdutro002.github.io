@@ -28,27 +28,27 @@ const calcScore = (movieScore, bookScore) => {
   }
 }
 
-const loadMovie = () => { //I couldn't figure out how to turn this into a single abstracted function, so this will be two more duplicate functions
-  $divToLoad.append($('div').css({
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    zIndex: 1000,
-    background: '#000',
-    opacity: 0.5
-  }).attr('id', 'loadingMovie'));
-}
+// const loadMovie = () => { //I couldn't figure out how to turn this into a single abstracted function, so this will be two more duplicate functions
+//   $divToLoad.append($('div').css({
+//     position: 'absolute',
+//     width: '100%',
+//     height: '100%',
+//     zIndex: 1000,
+//     background: '#000',
+//     opacity: 0.5
+//   }).attr('id', 'loadingMovie'));
+// }
 
-const loadBook = () => {
-  $divToLoad.append($('div').css({
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    zIndex: 1000,
-    background: '#000',
-    opacity: 0.5
-  }).attr('id', 'loadingBook'));
-}
+// const loadBook = () => {
+//   $divToLoad.append($('div').css({
+//     position: 'absolute',
+//     width: '100%',
+//     height: '100%',
+//     zIndex: 1000,
+//     background: '#000',
+//     opacity: 0.5
+//   }).attr('id', 'loadingBook'));
+// }
 
 //return specific omdb result - this will make another call to the omdb api to return top result using its id
 const returnMovie = (imdbID) => {
