@@ -26,7 +26,7 @@ at the moment, but I do plan on improving this programmatically as much as I can
 
 ## Known Bugs:
 
-~~* Api pulls are taking several seconds to load, which is giving false results on the "read the book/watch the movie" div ~~
+~~* Api pulls are taking several seconds to load, which is giving false results on the "read the book/watch the movie" div~~ 
 * calls themselves could stand to be optimized, maybe even rewritten to run simultaneously and more efficiently. 
 * Every other search, the modal won't correctly display - I suspect this is an issue with the jquery .toggleClass() method. 
 
