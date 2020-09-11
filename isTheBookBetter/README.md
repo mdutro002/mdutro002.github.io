@@ -20,7 +20,7 @@ love in the future to get more reliable results.
 
 
 ## Planned Features:
-* Convert the hacky XML parsing to GraphQL for the Goodreads API **Top Priority**
+* Convert the hacky XML parsing to GraphQL for the Goodreads API  * **Top Priority** *
 * loading animation while api inits and pulls. Currently each search takes approximately 3-8 seconds to run.
 * 'next result' button: adjust API to make multiple returns, and have this button iterate through those returns so one could get whatever movie version of "The Hobbit" they wanted to compare
 * 'add to to-read shelf' button: use OAuth to allow for users to push the resulting book to their to-read list after a search
